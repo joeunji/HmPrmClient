@@ -496,7 +496,7 @@ import { pushMsgInit } from '~/redux/actions/pushDataAction'
 					<View style={{flex:1, backgroundColor: colors.PRIMARY  }}></View>
 				)}
 							
-						<View style={[styles.homeIndicator, { backgroundColor: strContentAreaColor}]} />	
+						<View style={[styles.homeIndicator, { }]} />	
 					</SafeAreaView>
 				</View>
 	
