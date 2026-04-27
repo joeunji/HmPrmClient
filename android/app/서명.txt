@@ -1,0 +1,43 @@
+
+
+1. 키스토어 생성
+keytool -genkey -v -keystore hmprm-client.jks -storetype JKS -keyalg RSA -keysize 2048 -validity 10000 -alias hmkey
+
+Enter keystore password:  yamaha
+Re-enter new password: yamaha
+What is your first and last name?
+  [Unknown]:  HmPrmClient
+What is the name of your organizational unit?
+  [Unknown]:  개발팀
+What is the name of your organization?
+  [Unknown]:  한국모터트레이딩
+What is the name of your City or Locality?
+  [Unknown]:  Gwanak
+What is the name of your State or Province?
+  [Unknown]:  Seoul
+What is the two-letter country code for this unit?
+  [Unknown]:  KR
+Is CN=Jibegaja Team., OU=R&D Dept., O=Manwon Holdings, L=Gangnam, ST=Seoul, C=KR correct?
+  [no]:  y
+
+Generating 2,048 bit RSA key pair and self-signed certificate (SHA256withRSA) with a validity of 10,000 days
+        for: CN=MosaicDriver, OU=R&D Dept., O=MoramCnt, L=Gwangjin, ST=Seoul, C=KR
+Enter key password for <hmkey>
+        (RETURN if same as keystore password):  yamaha
+Re-enter new password: yamaha
+[Storing hmprm-client.jks]
+
+Warning:
+The JKS keystore uses a proprietary format. It is recommended to migrate to PKCS12 which is an industry standard format using "keytool -importkeystore -srckeystore hmprm-client.jks -destkeystore hmprm-client.jks -deststoretype pkcs12".
+yomile@Appleui-iMac app % 
+
+
+
+2. 해시키확인
+keytool -exportcert -alias androiddebugkey -keystore ./debug.keystore -storepass android -keypass android | openssl sha1 -binary | openssl base64
+keytool -exportcert -alias hmkey -keystore ./hmprm-client.jks -storepass yamaha -keypass yamaha | openssl sha1 -binary | openssl base64
+
+
+3. 파이어베이스 동적링크 생성을 위한 SHA-256키
+keytool -list -v  -alias hmkey -keystore ./hmprm-client.jks -storepass yamaha -keypass yamaha
+

@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "647620221038",
+    "project_id": "hmprm-cab5b",
+    "storage_bucket": "hmprm-cab5b.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:647620221038:android:6375de55ca60e2e1886e7f",
+        "android_client_info": {
+          "package_name": "hmprm.client"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD4F9VyASrec2Bo3kxpArmkmBudP_K_5FI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
