@@ -91,14 +91,13 @@ import { pushMsgInit } from '~/redux/actions/pushDataAction'
 	}
 
 	setPushLinkUrl  = (objData) => {
-		console.log("@@@@@@@@@@@@@@@@@@@@@ setPushLinkUrl(), Data:"+ JSON.stringify(objData));
+		console.log("*Main.setPushLinkUrl(), Data:"+ JSON.stringify(objData));
 		let strLink = objData.ref;
 		console.log("strLink:"+strLink);
-		if( strLink.indexOf("mc://")  > -1)
+		if( strLink.indexOf("hmprm://")  > -1)
 		{
 			var strUrl = Config.BASE_URL + strLink.substr(strLink.indexOf('://') + 2);
 			console.log("strUrl:"+ strUrl);
-		
 			this.setState({ sourceUrl: strUrl });
 		}
 		else
@@ -107,8 +106,6 @@ import { pushMsgInit } from '~/redux/actions/pushDataAction'
 		}
 	}
 
-
- 
 	sendPostMessage(objData)
 	{
 		if (this.refWebView != null)
