@@ -5,9 +5,9 @@
  * @brief	새로운화면 파일
  */
 import React, { PureComponent, Fragment } from "react";
-import { View, StyleSheet, BackHandler, ActivityIndicator, SafeAreaView, TouchableOpacity } from "react-native";
+import { View, StyleSheet, BackHandler, ActivityIndicator, SafeAreaView, TouchableOpacity, Platform, Linking, Text } from "react-native";
 import { connect } from "react-redux";
-import { colors} from "~/common/libs/base";
+import { colors, consts } from "~/common/libs/base";
 import AppStatusBar from "~/components/AppStatusBar";
 import { StackActions } from '@react-navigation/native';
 import {WebView} from "react-native-webview";
@@ -31,6 +31,13 @@ import { showDialog, hideDialog } from "~/redux/actions/dialogAction";
  */
 class NewScreen extends PureComponent
 {
+	getSourceUrlFromParams = (params) => {
+		if (params == null) return null;
+		if (params.sourceUrl != null) return params.sourceUrl;
+		if (params.msgData != null && params.msgData.sourceUrl != null) return params.msgData.sourceUrl;
+		return null;
+	}
+
 	/**
 	 * 생성자
 	 * @param {*} props  프로퍼티
@@ -40,8 +47,7 @@ class NewScreen extends PureComponent
 		super(props);
 		this.mBoolExitApp		= false;
 		this.mClsBackHandler	= null;
-		var strSourceUrl		= null;
-		if(this.props.route.params != null) strSourceUrl =  this.props.route.params.sourceUrl;
+		const strSourceUrl = this.getSourceUrlFromParams(this.props.route.params);
 
 		this.state = {
 			sourceUrl			: strSourceUrl,
@@ -60,11 +66,23 @@ class NewScreen extends PureComponent
 	
 		if(this.props.route.params != null)
 		{
-			strSourceUrl =  this.props.route.params.sourceUrl;
+			const strSourceUrl = this.getSourceUrlFromParams(this.props.route.params);
 			this.setState({sourceUrl : strSourceUrl });
 		}		
 		// 백버튼 핸들러 등록
 		this.mClsBackHandler = BackHandler.addEventListener("hardwareBackPress", this.onBackPressed);
+	}
+
+	componentDidUpdate(prevProps)
+	{
+		if (prevProps.route?.params !== this.props.route?.params)
+		{
+			const strSourceUrl = this.getSourceUrlFromParams(this.props.route.params);
+			if (strSourceUrl != null && strSourceUrl !== this.state.sourceUrl)
+			{
+				this.setState({ sourceUrl: strSourceUrl });
+			}
+		}
 	}
 	
 	/**
@@ -88,7 +106,7 @@ class NewScreen extends PureComponent
 		//console.log("*NewScreen.onBackPressed(), this.state.canGoBack:"+ this.state.canGoBack);
 		if (this.state.canGoBack)
 		{
-			if(this.refBaseWebView != null) this.refBaseWebView.goBack();
+			if(this.refWebView != null) this.refWebView.goBack();
 			return true;
 		}
 		else
@@ -138,7 +156,15 @@ class NewScreen extends PureComponent
 				console.log("=================================");
 				console.log("*MSG_REQUEST_GO_MAIN");
 				console.log("=================================");		
-				props.navigation.popTo("Main", objData);
+				this.props.navigation.navigate("Main", objData);
+			}
+			
+			if (strMsgId === consts.MSG_CLOSE_NEW_SCREEN) {
+				console.log("=================================");
+				console.log("*MSG_CLOSE_NEW_SCREEN");
+				console.log("=================================");		
+				this.props.navigation.goBack();
+				return;
 			}
 		}
 	}	

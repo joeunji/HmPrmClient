@@ -27,6 +27,7 @@ export default
 	MSG_REQUEST_PERMISSION			: "reqPerm",	// 퍼미션요청
 	MSG_GO_MAIN						: "goMain",		// 메인화면으로 이동
 	MSG_NEW_SCREEN					: "newScr",		// 새로운화면 오픈
+	MSG_CLOSE_NEW_SCREEN			: "closeNewScr",// 새로운화면 닫기
 	MSG_OPEN_URL					: "opnUrl",		// 새로운 URL 오픈
 	MSG_TOAST						: "toast",		// 토스트메시지
 
