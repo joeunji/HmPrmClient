@@ -222,7 +222,7 @@ import { pushMsgInit } from '~/redux/actions/pushDataAction'
 				let objMsgData = objData.msgData;
 				let strBaseUrl = objMsgData.baseUrl;
 				console.log(" -BaseUrl:" + strBaseUrl);
-				this.setState({ sourceUrl : strBaseUrl + this.props.appData.authPoage });
+				this.setState({ sourceUrl : strBaseUrl + this.props.appData.authPage });
 				this.props.dispatch(setAppData({baseUrl: strBaseUrl}));
 			}
 			else if(consts.MSG_GET_DEVICE_INFO == strMsgId)
