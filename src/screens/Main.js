@@ -443,7 +443,7 @@ import { pushMsgInit } from '~/redux/actions/pushDataAction'
 	{
 		const { sourceUrl, isConnected, isLoading } = 	this.state;
 
-		let strAppColor = colors.DEFAULT;
+		let strAppColor = colors.WHITE;
 		let strContentAreaColor = colors.DEFAULT;
 		console.log("*Main.render(), sourceUrl:"+ sourceUrl +",AppColor:"+ strAppColor +", isLoading:"+ isLoading);
 		return (
