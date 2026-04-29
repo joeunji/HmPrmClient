@@ -9,7 +9,7 @@
 		"android:prd": "react-native run-android --mode=prd",
 
 		"android:bundle:create": "npx react-native bundle --platform android --dev false --entry-file index.js --bundle-output android/app/src/main/assets/index.android.bundle --assets-dest android/app/src/main/res && rm -rf ./android/app/src/main/res/drawable-* && rm -rf ./android/app/src/main/res/raw",
-		"android:gradle:clean": "cd android && ./gradlew clean && cd ..",
+		"android:gradle:clean": "cd android && rm -rf app/.cxx && ./gradlew clean && cd ..",
 		"android:assemble:debug": "npm run android:bundle:create && npm run android:gradle:clean && cd android && ./gradlew assembleDebug",
 		"android:assemble:dev": "npm run android:bundle:create && npm run android:gradle:clean && cd android && ./gradlew assembleDev",
 		"android:assemble:stg": "npm run android:bundle:create && npm run android:gradle:clean && cd android && ./gradlew assembleStg",

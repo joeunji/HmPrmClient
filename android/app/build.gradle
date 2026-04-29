@@ -109,7 +109,7 @@ android {
 		release {
 			storeFile file('hmprm-client.jks')
 			storePassword 'yamaha'
-			keyAlias 'yamaha'
+			keyAlias 'hmkey'
 			keyPassword 'yamaha'
 		}
 	}
@@ -121,15 +121,31 @@ android {
 			]
 		}
 		release {
-			// Caution! In production, you need to generate your own keystore file.
-			// see https://reactnative.dev/docs/signed-apk-android.
-			signingConfig signingConfigs.debug
+			signingConfig signingConfigs.release
 			minifyEnabled enableProguardInReleaseBuilds
 			proguardFiles getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro"
 			manifestPlaceholders = [
 					usesCleartextTraffic: "false"
 			]
 		}
+
+		dev
+		{
+			initWith release
+			matchingFallbacks =  ['debug', 'release']
+			debuggable	true
+		}
+		stg
+		{
+			initWith release
+			//debuggable	true    
+			matchingFallbacks =  ['release']
+		}
+		prd
+		{
+			initWith release
+			matchingFallbacks =  ['release']
+		}			
 	}
 }
 
