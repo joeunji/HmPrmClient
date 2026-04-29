@@ -44,10 +44,14 @@
 		console.log("*AppStatusBar.render(), statusBarColor:"+ statusBarColor);
 		let intStatusHeight = Platform.OS === "ios" ? (isIphoneX() ? 44 : 20) : StatusBar.currentHeight;
 		return (
-			<View style={{ height: intStatusHeight, backgroundColor: statusBarColor }}>
-				<StatusBar translucent backgroundColor={statusBarColor} barStyle={statusBarStyle} />
-			</View>
-		)
+			Platform.OS == "ios" ? (
+				<View style={{ height: intStatusHeight, backgroundColor: statusBarColor }}>
+					<StatusBar translucent backgroundColor={statusBarColor} barStyle={statusBarStyle} />
+				</View>
+			) : (
+				<StatusBar backgroundColor={statusBarColor} barStyle={statusBarStyle} />
+			)
+		 );
 	 }
  }
 
