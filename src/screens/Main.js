@@ -471,11 +471,13 @@ import { pushMsgInit } from '~/redux/actions/pushDataAction'
 							allowFileAccess={true}
 							allowUniversalAccessFromFileURLs={true}
 							mixedContentMode="always"
-							//  Android 파일 업로드 핵심
+							//  Android 파일 업로드
 							onFileDownload={(e) => {
 								console.log("download", e.nativeEvent);
 							}}
 
+							// 채팅입력시 IOS에서 방향키 + Done 버튼 숨기기 위해 
+							hideKeyboardAccessoryView ={true}
 							onMessage={ this.onWebViewMessage }
 							onLoadStart={ this.onLoadStart }
 							onLoadEnd={ this.onLoadEnd }
