@@ -195,7 +195,7 @@ import { pushMsgInit } from '~/redux/actions/pushDataAction'
 				console.log(" -새로운화면요청");
 				this.props.navigation.navigate("NewScreen", objData);
 			}
-			else if(consts.MSG_GET_SCAN_DATA == strMsgId)
+			else if(consts.MSG_GET_SCAN_DATA == strMsgId || consts.MSG_GET_MULTI_SCAN_DATA == strMsgId)
 			{
 				console.log(" -스캔데이터 리턴");
 				if (this.props.route.name !== "QrScan")
