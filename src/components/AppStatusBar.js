@@ -49,7 +49,7 @@
 					<StatusBar translucent backgroundColor={statusBarColor} barStyle={statusBarStyle} />
 				</View>
 			) : (
-				<StatusBar backgroundColor={statusBarColor} barStyle={statusBarStyle} />
+				<StatusBar barStyle={statusBarStyle} />
 			)
 		 );
 	 }
