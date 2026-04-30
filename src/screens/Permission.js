@@ -250,7 +250,7 @@ class Permission extends PureComponent
 					): (
 						<View style={{flex:1, backgroundColor: "yellow"  }}></View>
 					)}
-						<View style={[styles.homeIndicator, { backgroundColor: colors.DEFAULT}]} />	
+						<View style={[styles.homeIndicator, { backgroundColor: colors.WHITE}]} />	
 					</SafeAreaView>
 				</View>
 			</Fragment>
