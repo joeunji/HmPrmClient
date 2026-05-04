@@ -5,7 +5,8 @@
  * @brief	초기 피미션 체크 화면 파일
  */
 import React, { PureComponent, Fragment } from "react";
-import { View, StyleSheet, ActivityIndicator, SafeAreaView, TouchableOpacity, Platform } from "react-native";
+import { View, StyleSheet, ActivityIndicator, TouchableOpacity, Platform } from "react-native";
+import { SafeAreaView } from 'react-native-safe-area-context';
 import { connect } from "react-redux";
 import {colors, consts } from "~/common/libs/base";
 import AppStatusBar from "~/components/AppStatusBar";
@@ -223,14 +224,12 @@ class Permission extends PureComponent
 	render()
 	{
 		const { sourceUrl, isConnected } = this.state;
-
-		let strAppColor = colors.WHITE;
-
 		console.log("*Permission.Render(), sourceUrl:"+ sourceUrl);
 		return (
 			<Fragment> 
-				<View style={{flex:1, backgroundColor: strAppColor}}>
-					<AppStatusBar />
+				<AppStatusBar />
+				<View style={{flex:1, backgroundColor: colors.WHITE}}>
+					
 					<SafeAreaView style={styles.contentArea}>
 						
 					{ isConnected ? (
@@ -249,9 +248,9 @@ class Permission extends PureComponent
 								/>
 						</View>
 					): (
-						<View style={{flex:1, backgroundColor: colors.PRIMARY  }}></View>
+						<View style={{flex:1, backgroundColor: "yellow"  }}></View>
 					)}
-						<View style={[styles.homeIndicator, { }]} />	
+						<View style={[styles.homeIndicator, { backgroundColor: colors.WHITE}]} />	
 					</SafeAreaView>
 				</View>
 			</Fragment>

@@ -5,7 +5,8 @@
  * @brief	새로운화면 파일
  */
 import React, { PureComponent, Fragment } from "react";
-import { View, StyleSheet, BackHandler, ActivityIndicator, SafeAreaView, TouchableOpacity, Platform, Linking, Text } from "react-native";
+import { View, StyleSheet, BackHandler, ActivityIndicator, TouchableOpacity, Platform, Linking, Text } from "react-native";
+import { SafeAreaView } from 'react-native-safe-area-context';
 import { connect } from "react-redux";
 import { colors, consts } from "~/common/libs/base";
 import AppStatusBar from "~/components/AppStatusBar";
@@ -302,8 +303,8 @@ class NewScreen extends PureComponent
 
 		return (
 			<Fragment> 
+				<AppStatusBar />
 				<View style={{flex:1, backgroundColor: colors.DEFAULT}}>
-					<AppStatusBar />
 					<SafeAreaView style={styles.contentArea}>
 						
 					{ isConnected ? (
@@ -338,7 +339,7 @@ class NewScreen extends PureComponent
 						<View style={{flex:1, backgroundColor: colors.PRIMARY  }}>
 						</View>
 					)}
-						<View style={[styles.homeIndicator, { backgroundColor: colors.DEFAULT}]} />	
+						<View style={[styles.homeIndicator, { }]} />	
 					</SafeAreaView>
 				</View>
 			</Fragment>

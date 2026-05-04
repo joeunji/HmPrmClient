@@ -50,6 +50,7 @@ import { pushMsgInit } from '~/redux/actions/pushDataAction'
 
 		this.state = {
 			sourceUrl			: baseUrl + authPage,
+			currentUrl: baseUrl + authPage,
 			canGoBack			: false,
 			isConnected			: true,
 			isLoading			: false,
@@ -98,11 +99,11 @@ import { pushMsgInit } from '~/redux/actions/pushDataAction'
 		{
 			var strUrl = Config.BASE_URL + strLink.substr(strLink.indexOf('://') + 2);
 			console.log("strUrl:"+ strUrl);
-			this.setState({ sourceUrl: strUrl });
+			this.setState({ sourceUrl: strUrl, currentUrl: strUrl });
 		}
 		else
 		{
-			this.setState({ sourceUrl: strLink });
+			this.setState({ sourceUrl: strLink, currentUrl: strLink });
 		}
 	}
 
@@ -433,7 +434,7 @@ import { pushMsgInit } from '~/redux/actions/pushDataAction'
 
 	onNaviStateChange = (event) => {
 		console.log("*Main.onNaviStateChange(), canGoBack:"+ event.canGoBack );
-		this.setState({ canGoBack: event.canGoBack });
+		this.setState({ canGoBack: event.canGoBack, currentUrl: event.url, });
 	}
 
 	/**
@@ -441,19 +442,19 @@ import { pushMsgInit } from '~/redux/actions/pushDataAction'
 	 */
 	render()
 	{
-		const { sourceUrl, isConnected, isLoading } = 	this.state;
+		const { sourceUrl, isConnected, isLoading, currentUrl } = 	this.state;
 
-		let strAppColor = colors.WHITE;
-		let strContentAreaColor = colors.DEFAULT;
+		let strAppColor = currentUrl.indexOf("login") != -1 ? colors.WHITE : colors.DEFAULT;
+		let strContentAreaColor = colors.BACKGROUND;
 		console.log("*Main.render(), sourceUrl:"+ sourceUrl +",AppColor:"+ strAppColor +", isLoading:"+ isLoading);
 		return (
 			<Fragment> 
+				<AppStatusBar />
 				<View style={{flex:1, backgroundColor: strAppColor}}>
-					<AppStatusBar />
 					<SafeAreaView style={styles.contentArea}>
 				{ isConnected ? (
 					<View style={{ flex: 1 }}>
-						<WebView style={{ flex:1, backgroundColor: colors.BACKGROUND }}
+						<WebView style={{ flex:1, backgroundColor: strContentAreaColor }}
 							source={{uri: sourceUrl}}
 							originWhitelist={['*']} 
 							ref={webView => this.refWebView = webView }
