@@ -305,7 +305,7 @@
 					"-ObjC",
 					"-lc++",
 				);
-				"PRODUCT_BUNDLE_IDENTIFIER[sdk=iphoneos*]" = hmprm.client.dev;
+				PRODUCT_BUNDLE_IDENTIFIER = hmprm.client;
 				PRODUCT_NAME = HmPrmClient;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -336,7 +336,7 @@
 					"-ObjC",
 					"-lc++",
 				);
-				"PRODUCT_BUNDLE_IDENTIFIER[sdk=iphoneos*]" = hmprm.client.dev;
+				PRODUCT_BUNDLE_IDENTIFIER = hmprm.client;
 				PRODUCT_NAME = HmPrmClient;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SWIFT_VERSION = 5.0;

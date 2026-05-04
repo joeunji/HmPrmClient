@@ -223,10 +223,13 @@ class Permission extends PureComponent
 	render()
 	{
 		const { sourceUrl, isConnected } = this.state;
+
+		let strAppColor = colors.WHITE;
+
 		console.log("*Permission.Render(), sourceUrl:"+ sourceUrl);
 		return (
 			<Fragment> 
-				<View style={{flex:1, backgroundColor: colors.DEFAULT}}>
+				<View style={{flex:1, backgroundColor: strAppColor}}>
 					<AppStatusBar />
 					<SafeAreaView style={styles.contentArea}>
 						
@@ -248,7 +251,7 @@ class Permission extends PureComponent
 					): (
 						<View style={{flex:1, backgroundColor: colors.PRIMARY  }}></View>
 					)}
-						<View style={[styles.homeIndicator, { backgroundColor: colors.DEFAULT}]} />	
+						<View style={[styles.homeIndicator, { }]} />	
 					</SafeAreaView>
 				</View>
 			</Fragment>
